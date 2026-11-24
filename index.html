@@ -1232,7 +1232,7 @@ $('#sortGo').onclick=async()=>{if(!pick.house)return;$('#sortGo').disabled=true;
 let myModel=null,myKey='',myPet=null,myPetId='';
 function ensureMyModel(){const key=[ME.house,ME.hair,ME.skin,ME.equip.hat,ME.equip.face].join('|');if(key!==myKey){if(myModel&&myModel.g.parent)myModel.g.parent.remove(myModel.g);myModel=makeChar({h:ME.house,hair:ME.hair,skin:ME.skin,hat:ME.equip.hat,face:ME.equip.face});setTag(myModel,ME.name,ME.house,true);myKey=key}
  const pid=ME.equip.pet||'';if(pid!==myPetId){if(myPet&&myPet.g.parent)myPet.g.parent.remove(myPet.g);myPet=pid?makePet(pid):null;myPetId=pid}}
-const APP_VER='v1125d';
+const APP_VER='v1125e';
 function track(ev,params){try{if(typeof window.gtag==='function')window.gtag('event',ev,params||{})}catch(e){}}
 function enterLibrary(isNew){track(isNew?'sign_up':'login',{method:'character',house:ME&&ME.house});ME.read=ME.read||{};ME.done=ME.done||{};ME.equip=ME.equip||{};ME.items=ME.items||[];ME.books=ME.books||['b1'];
  $('#sortScreen').classList.add('hidden');$('#intro').classList.add('hidden');['#hud','#online','#ctrlHint'].forEach(s=>$(s).classList.remove('hidden'));updateHud();Snd.init();
@@ -1539,7 +1539,7 @@ function npcTalkCam(n,o){const sc=SC[scene];let vx=P.x-n.x,vy=P.y-n.y;let d=Math
  for(const want of[o.dist,o.dist*.8,o.dist*.6]){const nx=n.x+vx*want/S,ny=n.y+vy*want/S;if(!blocked(sc,nx,ny)||sc.fly){P.x=nx;P.y=ny;break}}
  if(P.sit)stand();P.tx=P.ty=null;P.pend=null;P.moving=false;P.ang=Math.atan2(n.x-P.x,n.y-P.y);P.petX=P.x+vy*30;P.petY=P.y-vx*30;keys.clear();
  const Nx=n.x*S,Nz=n.y*S,dd=Math.hypot(P.x*S-Nx,P.y*S-Nz),lx=-vy,lz=vx;
- const mb=isMob(),bk=o.back+(mb?.7:0),sd=o.side*(mb?.45:1);talkCam={pos:new THREE.Vector3(Nx+vx*(dd+bk)+lx*sd,o.camY+(mb?.3:0),Nz+vy*(dd+bk)+lz*sd),look:new THREE.Vector3(Nx,o.lookY,Nz)}}
+ const mb=isMob(),bk=o.back+(mb?.7:0),sd=o.side*(mb?.75:1);talkCam={pos:new THREE.Vector3(Nx+vx*(dd+bk)+lx*sd,o.camY+(mb?.3:0),Nz+vy*(dd+bk)+lz*sd),look:new THREE.Vector3(Nx,o.lookY,Nz)}}
 function talkVillager(n){n.talking=true;npcTalkCam(n,{dist:2.1,back:2.3,side:1.15,camY:1.65,lookY:.75});const L=VLINES[n.id];const line=L[(n.li=(n.li==null?Math.random()*L.length|0:(n.li+1)%L.length))];say(n.name,line,[['책 추천해 줘',()=>{const b=recommendByTags(n.id==='moka'?['추리']:n.id==='dubu'?['일상','음식','위로']:n.id==='kkwak'?['하늘','상상']:['모험','멀리'],1)[0];say(n.name,`음~ 『${b.title}』! ${b.blurb}`,[['서점에서 보기',()=>{closeDialog();openStore([b.genre])}]],n)}]],n)}
 let dialogNpc=null;
 function say(who,text,acts,npc){if(dialogNpc&&dialogNpc!==npc)dialogNpc.talking=false;dialogNpc=npc||null;const d=$('#dialog');d.querySelector('.who').textContent=who;d.querySelector('.txt').textContent=text;const a=d.querySelector('.acts');a.innerHTML='';for(const[l,f]of(acts||[])){const b=document.createElement('button');b.textContent=l;b.onclick=f;a.appendChild(b)}const c=document.createElement('button');c.textContent='닫기';c.onclick=closeDialog;a.appendChild(c);d.classList.remove('hidden');dialogOpen=true;keys.clear()}
