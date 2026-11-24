@@ -1191,11 +1191,13 @@ const clickM=new THREE.Mesh(new THREE.RingGeometry(.25,.33,32),new THREE.MeshBas
 async function initCaps(){const use=(window.claude&&typeof window.claude.use==='function')?n=>withTimeout(window.claude.use(n),11000).catch(()=>null):async()=>null;
  const[db,room,sample]=await Promise.all([use('db'),use('room'),use('sample')]);CAP.db=db;CAP.room=room;CAP.sample=sample;CAP.ready=true;STORE_MODE=db?'db':'local';
  $('#storeMode').textContent=db?'☁️ 공유 저장소 연결됨 — 어느 기기에서나 같은 캐릭터':'💾 이 기기의 브라우저에만 저장돼요';if(room)initRoom()}
-async function loadChar(id){let rec=null;if(CAP.db){try{const s=await withTimeout(CAP.db.doc('characters/'+id).get(),9000);if(s.exists)rec=JSON.parse(JSON.stringify(s.data()))}catch(e){}}if(!rec){try{rec=JSON.parse(localStorage.getItem('ml_'+id)||'null')}catch(e){}}return rec}
+async function loadChar(id){let rec=null,loc=null;if(CAP.db){try{const s=await withTimeout(CAP.db.doc('characters/'+id).get(),9000);if(s.exists)rec=JSON.parse(JSON.stringify(s.data()))}catch(e){}}try{loc=JSON.parse(localStorage.getItem('ml_'+id)||'null')}catch(e){}
+ if(loc&&(!rec||(+loc.updatedAt||0)>(+rec.updatedAt||0))){if(rec&&loc.hash!==rec.hash)return rec;if(rec){loc.reviews=Object.assign({},rec.reviews||{},loc.reviews||{})}rec=loc;setTimeout(()=>{if(ME&&ME.id===id)doSave()},1500)}return rec}
 let saveTimer,saving=false,saveAgain=false;
 function save(){clearTimeout(saveTimer);saveTimer=setTimeout(doSave,700)}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'&&ME)doSave()});
 async function doSave(){if(!ME)return;if(saving){saveAgain=true;return}saving=true;const rec=JSON.parse(JSON.stringify(ME));rec.updatedAt=Date.now();try{localStorage.setItem('ml_'+ME.id,JSON.stringify(rec))}catch(e){}
- if(CAP.db&&STORE_MODE==='db'){try{await CAP.db.doc('characters/'+ME.id).set(rec)}catch(e){if(e&&(e.code==='invalid_argument'||e.code==='revoked')){STORE_MODE='local';toast('공유 저장 권한이 없어 이 기기에만 저장돼요')}}}
+ if(CAP.db&&STORE_MODE==='db'){try{await withTimeout(CAP.db.doc('characters/'+ME.id).set(rec),12000)}catch(e){if(e&&(e.code==='invalid_argument'||e.code==='revoked')){STORE_MODE='local';toast('공유 저장 권한이 없어 이 기기에만 저장돼요')}else{clearTimeout(saveTimer);saveTimer=setTimeout(doSave,6000)}}}
  saving=false;if(saveAgain){saveAgain=false;doSave()}}
 
 /* ===================== 미리보기 렌더러 ===================== */
@@ -1480,7 +1482,7 @@ function openReview(){if(!ME)return;closeDialog();ME.reviews=ME.reviews||{};cons
   const ta=$('#rvText'),cnt=()=>$('#rvCnt').textContent=ta.value.length+' / 1000';cnt();ta.oninput=()=>{lastType=performance.now();cnt()};ta.onkeydown=()=>{lastType=performance.now()};
   $('#rvBook').onchange=e=>{reviewBook=e.target.value;stars=3;draw()};el.querySelectorAll('[data-st]').forEach(bt=>bt.onclick=()=>{stars=+bt.dataset.st;el.querySelectorAll('[data-st]').forEach(x=>x.classList.toggle('on',+x.dataset.st<=stars))});
   $('#rvX').onclick=closeReview;$('#rvCancel').onclick=closeReview;
-  $('#rvSubmit').onclick=()=>{const t=ta.value.trim();if(t.length<20){toast('서평을 20자 이상 써 주세요 ('+t.length+'자)');ta.focus();return}const first=!ME.reviews[reviewBook];ME.reviews[reviewBook]={t,s:stars,d:Date.now()};track('write_review',{book_id:reviewBook,rating:stars,first:first?1:0});if(CAP.db&&STORE_MODE==='db'){CAP.db.doc('reviews/'+reviewBook+'__'+ME.id).set({book:reviewBook,cid:ME.id,name:ME.name,house:ME.house,s:stars,t,d:Date.now()}).catch(()=>{})}RVC.at=0;if(first){ME.coins+=30;refreshCoins();toast(`🎉 『${BOOK[reviewBook].title}』 서평 등록! +30 코인`)}else toast('📝 서평을 고쳐 저장했어요');save();closeReview()}};
+  $('#rvSubmit').onclick=()=>{const t=ta.value.trim();if(t.length<20){toast('서평을 20자 이상 써 주세요 ('+t.length+'자)');ta.focus();return}const first=!ME.reviews[reviewBook];ME.reviews[reviewBook]={t,s:stars,d:Date.now()};track('write_review',{book_id:reviewBook,rating:stars,first:first?1:0});if(CAP.db&&STORE_MODE==='db'){CAP.db.doc('reviews/'+reviewBook+'__'+ME.id).set({book:reviewBook,cid:ME.id,name:ME.name,house:ME.house,s:stars,t,d:Date.now()}).catch(()=>{})}RVC.at=0;doSave();if(first){ME.coins+=30;refreshCoins();toast(`🎉 『${BOOK[reviewBook].title}』 서평 등록! +30 코인`)}else toast('📝 서평을 고쳐 저장했어요');save();closeReview()}};
  draw();el.classList.add('show');setTimeout(()=>{const ta=$('#rvText');if(ta&&!isTouch())ta.focus()},300)}
 function closeReview(){reviewOpen=false;reviewCam=null;if(P.pose==='type')P.pose=null;const el=$('#reviewPanel');if(el)el.classList.remove('show');if(camera.view&&camera.view.enabled)camera.clearViewOffset();if(P.sit)$('#sitBar').classList.remove('hidden')}$('#sbUp').onclick=()=>stand();
 $('#bView').onclick=()=>{if(ME)setView(VIEWS[(VIEWS.indexOf(view)+1)%3])};
