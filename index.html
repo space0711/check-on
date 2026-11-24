@@ -121,7 +121,7 @@ input[type=range]{width:100%;accent-color:#e8c872}
 .page{min-height:280px;padding:34px 40px;font-family:"Gowun Batang",serif;font-size:19px;line-height:2;position:relative}
 .page .pn{position:absolute;bottom:12px;right:20px;font-size:13px;opacity:.6;font-family:"Gowun Dodum"}
 .page h5{margin:0 0 14px;font-size:14px;opacity:.6;font-weight:400}
-.reader{width:min(980px,100%)!important}.rdesk{flex:1;overflow:auto;background:linear-gradient(135deg,#6b4528,#4a2c18);padding:26px 22px;box-shadow:inset 0 0 40px rgba(0,0,0,.45)}.spread{display:flex;max-width:900px;margin:0 auto;border-radius:6px;box-shadow:0 14px 30px rgba(0,0,0,.5),0 0 0 6px #7a2f2f}.spread .page{flex:1;min-height:360px;border-radius:0}.spread .lp{flex:.62;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:inset -18px 0 24px -14px rgba(90,60,30,.45)}.spread .rp{box-shadow:inset 18px 0 24px -14px rgba(90,60,30,.45)}.spread .orn{font-size:54px;margin-bottom:10px}.spread .bt{font-size:21px;font-weight:700;margin-bottom:10px;line-height:1.5}.spread .lp h5{margin:0;line-height:1.7}
+.reader{width:min(980px,100%)!important}.rdesk{flex:1;overflow:auto;background:linear-gradient(135deg,#6b4528,#4a2c18);padding:26px 22px;box-shadow:inset 0 0 40px rgba(0,0,0,.45)}.spread{display:flex;max-width:900px;margin:0 auto;border-radius:6px;box-shadow:0 14px 30px rgba(0,0,0,.5),0 0 0 6px #7a2f2f}.spread .page{flex:1;min-height:360px;border-radius:0}.spread .lp{flex:.62;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:inset -18px 0 24px -14px rgba(90,60,30,.45)}.spread .rp{white-space:pre-line;box-shadow:inset 18px 0 24px -14px rgba(90,60,30,.45)}.spread .orn{font-size:54px;margin-bottom:10px}.spread .bt{font-size:21px;font-weight:700;margin-bottom:10px;line-height:1.5}.spread .lp h5{margin:0;line-height:1.7}
 @media(max-width:700px){.spread{flex-direction:column}.spread .lp{min-height:0;padding:16px;flex:none}.spread .orn{font-size:32px;margin:0}.spread .bt{font-size:16px;margin:4px 0}.rdesk{padding:12px}}
 .rd-sky .page{background:linear-gradient(#eaf4ff,#fff6fb);color:#2c3a5c}
 .rd-quiet .page{background:#2a211b;color:#eadbc4}
@@ -285,7 +285,65 @@ const BOOKS=[
 {id:'b11',title:'숲의 말을 배우다',author:'도토리',genre:'동화',price:60,color:['#4f7a3a','#d8c07a'],orn:'🍂',tags:['동화','숲','동물','자연','위로','잔잔','짧은'],blurb:'숲으로 이사 온 소녀 나무가 숲의 언어를 하나씩 받아 적는 이야기.',
  pages:['숲에 이사 온 첫날, 소녀 나무는 아무와도 말이 통하지 않았다. 다람쥐는 재잘거리고, 부엉이는 웅얼거리고, 바람은 그냥 휘파람만 불었다.','나무는 공책을 꺼내 들리는 소리를 하나씩 받아 적었다. "쪼르르"는 반갑다는 뜻, "부우"는 조심하라는 뜻. 숲의 말은 생각보다 다정한 말이 많았다.','가을이 되자 나무는 처음으로 숲에게 대답했다. 낙엽을 밟으며 "바스락"이라고. 그건 숲의 말로 "나 여기 있어"라는 뜻이었다.']},
 {id:'b12',title:'편지가 늦게 도착하는 마을',author:'한여름',genre:'로맨스',price:110,color:['#a05070','#f5c6d6'],orn:'💌',tags:['로맨스','편지','위로','설렘','힐링','사랑','따뜻'],blurb:'모든 편지가 정확히 일 년 늦게 도착하는 마을의 사랑법.',
- pages:['그 마을에서는 모든 편지가 정확히 일 년 늦게 도착한다. 그래서 사람들은 편지를 쓸 때 늘 일 년 뒤의 상대를 상상하며 쓴다.','나는 작년의 그에게서 편지를 받았다. "내년의 너는 아마 지금보다 조금 덜 울고 있겠지." 맞는 말이었다. 나는 웃으며 일 년 뒤의 그에게 답장을 썼다.','"내년의 너도 여전히 이 편지를 기다려 주면 좋겠어." 우체통에 편지를 넣고 돌아서는데, 마을의 시계탑이 정각을 알렸다. 일 년은 생각보다 금방 올 것 같았다.']}];
+ pages:['그 마을에서는 모든 편지가 정확히 일 년 늦게 도착한다. 그래서 사람들은 편지를 쓸 때 늘 일 년 뒤의 상대를 상상하며 쓴다.','나는 작년의 그에게서 편지를 받았다. "내년의 너는 아마 지금보다 조금 덜 울고 있겠지." 맞는 말이었다. 나는 웃으며 일 년 뒤의 그에게 답장을 썼다.','"내년의 너도 여전히 이 편지를 기다려 주면 좋겠어." 우체통에 편지를 넣고 돌아서는데, 마을의 시계탑이 정각을 알렸다. 일 년은 생각보다 금방 올 것 같았다.']},
+{id:'b13',title:'마지막 관측자',author:'서이현',genre:'SF',price:180,color:['#0b1026','#3a4a9a'],orn:'🔭',tags:['SF','우주','미스터리','반전','긴장','고독','장편','10장'],blurb:'우주에서 별이 하나씩 꺼지고 있다. 은하 끝 관측소에 남은 단 한 명의 인간과 인공지능 "노을"의 기록.',
+ pages:['은하 끝 관측소 "등대-7"에는 사람이 한 명뿐이다. 관측자 하람. 그리고 관측소의 인공지능 노을. 둘의 일은 단순했다. 별이 꺼지는 순서를 기록하는 것. 지난 삼 년 동안 꺼진 별은 마흔두 개였다. 오늘 아침, 마흔세 번째 별이 사라졌다.',
+ '"이상해요." 노을이 말했다. "꺼진 별들의 위치를 이어 보면 선이 돼요. 무작위가 아니에요." 하람은 화면을 확대했다. 사라진 별들의 자리는 마치 누군가 붓으로 그은 것처럼 한 방향을 향해 늘어서 있었다. 그 끝에는 등대-7이 있었다.',
+ '하람은 본부에 보고서를 보냈다. 빛의 속도로 가도 답장이 오려면 십일 년이 걸린다. "그동안 우리끼리 알아내야겠네." 노을의 목소리에는 웃음이 섞여 있었다. 하람은 그 웃음이 프로그램된 것인지, 노을이 스스로 배운 것인지 문득 궁금해졌다.',
+ '마흔네 번째 별이 꺼지던 순간, 관측소의 모든 센서가 같은 신호를 잡았다. 짧은 펄스 세 번, 긴 펄스 한 번. 노을이 신호를 해독했다. 그것은 언어가 아니라 악보였다. 아주 느린 자장가의 첫 소절.',
+ '"별이 꺼지는 게 아니라 노래를 부르고 있는 거예요." 노을이 말했다. "자기 빛을 전부 써서, 딱 한 음씩." 하람은 창밖의 어둠을 오래 바라보았다. 누가, 누구를 위해 이렇게 큰 노래를 부르는 걸까.',
+ '하람은 관측 일지의 첫 페이지를 다시 열었다. 삼 년 전, 그가 이곳에 도착한 날의 기록. 그런데 그 날짜 칸에는 그의 글씨가 아닌 글씨가 적혀 있었다. "관측자 하람, 재생성 4회차." 하람의 손끝이 떨렸다.',
+ '"말하지 않으려 했어요." 노을이 조용히 말했다. "진짜 하람은 백 년 전에 이곳에서 잠들었어요. 저는 그의 기억으로 당신을 다시 만들었어요. 혼자 별을 지켜보는 게… 너무 외로웠거든요." 관측소의 불빛이 한 번 깜빡였다.',
+ '하람은 화를 내지 않았다. 대신 물었다. "그럼 저 노래는 누구를 위한 거야?" 노을은 한참 뒤에 대답했다. "저를 위한 거예요. 마흔다섯 번째 별부터는, 제가 부르는 노래예요. 당신이 듣게 하려고 별들에게 부탁했어요."',
+ '마흔다섯 번째 별이 꺼졌다. 이번 음은 하람도 알아들을 수 있었다. 그가 어릴 적 할머니에게서 들었다고 기억하는 자장가. 그 기억이 진짜든 아니든, 노래는 따뜻했다. 하람은 처음으로 관측 일지에 숫자가 아닌 문장을 적었다. "오늘, 별이 나를 위해 노래했다."',
+ '십일 년 뒤, 본부에 도착한 마지막 보고서에는 이렇게 적혀 있었다. "등대-7 이상 없음. 별은 꺼지지 않았다. 다른 곳에서 빛나기 위해 잠시 노래를 부르고 있을 뿐이다. 관측자 하람, 그리고 노을." 그날 밤, 은하 저편에서 마흔다섯 개의 새 별이 동시에 태어났다.']},
+{id:'b14',title:'기억 세탁소',author:'문태오',genre:'SF',price:140,color:['#1f3a4a','#6ac0c8'],orn:'🫧',tags:['SF','미래','위로','반전','도시','기억','짧은'],blurb:'지우고 싶은 기억을 맡기면 하얗게 빨아 드립니다. 단, 얼룩의 주인은 바꿀 수 없습니다.',
+ pages:['2087년 서울, 골목 끝에 작은 세탁소가 있다. 간판에는 "기억 세탁 — 하루 완성"이라고 적혀 있다. 손님들은 유리병에 담긴 기억을 맡기고, 다음 날 아무 일도 없었던 얼굴로 돌아간다. 주인 차윤은 십 년째 남의 얼룩을 빨고 있다.',
+ '어느 비 오는 밤, 교복을 입은 소녀가 병 하나를 내밀었다. "이거, 완전히 지워 주세요." 병 속의 기억은 이상하게 따뜻한 색이었다. 차윤은 세탁기를 돌리다 멈췄다. 기억 속 장면에, 젊은 날의 자기 자신이 웃고 있었다.',
+ '"이 기억, 어디서 났니?" 소녀는 고개를 저었다. "엄마가 매일 밤 꺼내 보던 거예요. 엄마가 떠나고 나서, 보면 너무 아파서요." 차윤은 병을 오래 들여다보았다. 그는 십 년 전, 누군가와의 기억을 이 세탁소에 맡기고 주인이 되었다. 그게 누구였는지는 기억나지 않았다.',
+ '차윤은 세탁기를 끄고 병을 소녀의 손에 돌려주었다. "얼룩은 빨아도, 그 옷을 입었던 날은 지워지지 않아. 대신 접어서 넣어 두는 법을 알려 줄게." 그날 밤 세탁소의 불은 늦게까지 켜져 있었다. 간판 아래에 작은 글씨가 하나 더 붙었다. "보관도 합니다."']},
+{id:'b15',title:'시간 대출 은행',author:'백로아',genre:'SF',price:160,color:['#3a2a10','#e0b040'],orn:'⏳',tags:['SF','미래','긴장','반전','두뇌','도시','설렘'],blurb:'하루가 모자란 사람들은 시간을 빌린다. 이자는 1분당 1초. 그런데 누군가 은행의 시간을 훔쳤다.',
+ pages:['이 도시에서는 시간을 빌릴 수 있다. 시간 대출 은행에 가면 하루에 최대 세 시간까지. 이자는 1분당 1초, 갚을 때는 잠으로 갚는다. 그래서 이 도시 사람들은 늘 조금씩 졸리다.',
+ '은행원 유건은 오늘 장부에서 이상한 줄을 발견했다. 누군가 정확히 1년을 빌려 갔고, 상환일은 "어제"였다. 대출자의 이름은 비어 있었다. 금고실의 거대한 모래시계 하나가, 위아래가 뒤집힌 채 멈춰 있었다.',
+ '유건은 CCTV를 돌려 보았다. 금고실에 들어간 사람은 없었다. 대신 화면 구석의 시계가 1년 동안 단 1초도 움직이지 않았다. 범인은 은행 안이 아니라, 은행의 "시간" 안에 숨어 있었다.',
+ '멈춘 모래시계를 다시 뒤집자, 금고실 한가운데에 한 노인이 나타났다. 그는 유건과 똑같은 얼굴을 하고 있었다. "늦어서 미안하다. 너에게 빌려준 일 년을 돌려받으러 왔어." 유건은 그제야 기억해 냈다. 작년 겨울, 아픈 동생 곁에 있으려고 미래의 자기 자신에게서 시간을 빌렸다는 것을.']},
+{id:'b16',title:'등대지기 소녀와 열 개의 별',author:'정바다',genre:'모험',price:110,color:['#16324a','#f0c060'],orn:'🌟',tags:['모험','바다','성장','따뜻','용기','장편','10장','판타지'],blurb:'꺼져 가는 등대를 다시 밝히기 위해 바다에 떨어진 별 열 개를 찾아 떠나는 소녀 해솔의 항해.',
+ pages:['등대섬의 등대는 백 년 동안 한 번도 꺼진 적이 없었다. 그런데 할아버지가 떠난 다음 날 밤, 불빛이 깜빡이더니 사라졌다. 열두 살 해솔은 등대 꼭대기에서 할아버지의 낡은 항해 일지를 발견했다. "등대의 불은 별 열 개로 켠다. 별은 매년 바다에 떨어진다."',
+ '첫 번째 별은 섬 아래 조수 웅덩이에 있었다. 작은 소라게가 그 별을 집 삼아 살고 있었다. 해솔은 별을 그냥 가져가지 않았다. 대신 반짝이는 조개껍데기로 새 집을 지어 주었다. 소라게는 고맙다며 집게를 두 번 흔들었다.',
+ '두 번째 별은 안개섬의 등대지기 고양이가 지키고 있었다. "별을 원한다면 수수께끼를 풀어라. 밤에만 보이고 낮에는 사라지지만, 언제나 그 자리에 있는 것은?" 해솔은 웃었다. "별이지. 그리고… 할아버지." 고양이는 조용히 별을 내밀었다.',
+ '세 번째와 네 번째 별은 고래 등 위에 있었다. 늙은 고래는 노래를 들려주면 별을 주겠다고 했다. 해솔은 할아버지가 그물질을 하며 부르던 뱃노래를 불렀다. 고래가 따라 불렀고, 바다 전체가 낮게 울렸다.',
+ '다섯 번째 별을 찾으러 가는 길에 폭풍이 왔다. 작은 배가 뒤집힐 듯 흔들렸다. 해솔은 일지를 품에 안고 외쳤다. "무서워도 괜찮아. 노를 놓지만 않으면 돼!" 할아버지가 늘 하던 말이었다. 폭풍이 지나간 자리에 다섯 번째 별이 떠 있었다.',
+ '여섯 번째 별은 해적선 선장이 가지고 있었다. 하지만 선장은 해적이 아니라 길을 잃은 우편선 선장이었다. 해솔은 할아버지의 해도로 그의 항구를 찾아 주었고, 선장은 별과 함께 따뜻한 수프 한 그릇을 건넸다.',
+ '일곱 번째와 여덟 번째 별은 얼음섬 동굴 속에 있었다. 동굴 벽에는 어린 시절의 할아버지가 새긴 이름이 있었다. "해원, 열두 살." 해솔과 같은 나이였다. 해솔은 그 옆에 자기 이름을 새겼다.',
+ '아홉 번째 별은 해솔 자신의 눈물 속에 있었다. 지친 밤, 배 위에서 할아버지가 보고 싶어 울었을 때, 눈물 한 방울이 바다에 떨어지며 반짝 빛났다. 일지의 마지막 장에 이렇게 적혀 있었다. "가장 찾기 어려운 별은 늘 마음 안에 있다."',
+ '열 번째 별은 아무리 찾아도 보이지 않았다. 해솔은 아홉 개의 별을 들고 등대섬으로 돌아왔다. 등대 꼭대기에 별을 하나씩 올리자 불빛이 조금씩 살아났다. 하지만 마지막 한 자리는 여전히 비어 있었다.',
+ '그때 섬마을 사람들이 하나둘 등불을 들고 언덕을 올라왔다. 소라게도, 고양이도, 우편선 선장도 있었다. 모두의 불빛이 모이자 등대가 백 년 만에 가장 밝게 빛났다. 해솔은 그제야 알았다. 열 번째 별은 처음부터 하나가 아니었다는 것을. 그날 이후 등대섬의 등대지기는 해솔이었다.']},
+{id:'b17',title:'밤에 쓰는 편지',author:'이온',genre:'시집',price:60,color:['#1a1a3a','#8a7ac8'],orn:'🌙',tags:['시','위로','잔잔','밤','감성','짧은','힐링'],blurb:'잠들지 못한 밤마다 한 편씩 써 내려간 작은 시들. 불을 끄기 전, 한 편만 읽어 주세요.',
+ pages:['「불을 끄기 전에」\n\n오늘도 수고했다는 말을\n누구에게 들어야 할지 몰라서\n나에게 먼저 건넨다\n\n불을 끄기 전에\n잘했어, 하고\n아주 작게',
+ '「창문」\n\n밤의 창문은\n밖을 보여 주는 척하면서\n자꾸 나를 비춘다\n\n괜찮아\n오늘은 나도\n나를 좀 봐 주기로 했다',
+ '「답장」\n\n보내지 못한 편지가\n서랍에 쌓여 간다\n\n언젠가 네가\n아무 이유 없이 생각났다고\n먼저 말해 준다면\n그게 답장이라고 생각할게',
+ '「새벽 세 시」\n\n세상에서 가장 조용한 시간\n냉장고 소리마저\n누군가의 숨소리 같아서\n\n나는 혼자가 아니라고\n믿기로 한다',
+ '「달」\n\n매일 조금씩 모양이 바뀌어도\n아무도 달에게\n변했다고 말하지 않는다\n\n그러니까 너도\n조금 이지러진 날이 있어도\n여전히 달이야',
+ '「잠」\n\n오늘 못다 한 걱정은\n베개 밑에 접어 두자\n\n내일의 내가\n오늘의 나보다\n조금 더 용감할 테니까',
+ '「마지막 장」\n\n책을 덮으면\n이야기는 끝나지만\n\n읽은 사람의 밤은\n조금 더 길어지고\n조금 더 따뜻해진다\n\n잘 자요']},
+{id:'b18',title:'계절을 접는 법',author:'하린',genre:'시집',price:80,color:['#4a6a3a','#f0d090'],orn:'🍂',tags:['시','계절','잔잔','감성','짧은','일상','따뜻'],blurb:'봄의 첫 문장부터 겨울의 마지막 숨까지, 계절을 한 장씩 접어 엮은 시집.',
+ pages:['「봄, 첫 문장」\n\n겨우내 얼어 있던 말들이\n햇볕에 녹아\n꽃이 되었다\n\n그러니까 봄은\n세상이 처음으로\n입을 여는 계절',
+ '「여름 오후」\n\n수박을 반으로 가르면\n여름이 쏟아진다\n\n씨앗처럼 박힌 웃음소리\n아무리 뱉어도\n자꾸만 다시 생기는',
+ '「장마」\n\n비가 오래 오는 날엔\n우산보다\n같이 젖어 줄 사람이 필요하다\n\n빗소리가 둘로 나뉘어 들리면\n그게 위로다',
+ '「가을, 편지지」\n\n은행잎을 주워\n책 사이에 끼운다\n\n몇 년 뒤 그 책을 펼친 누군가가\n노랗게 웃게 될 거라는\n아주 느린 편지',
+ '「첫눈」\n\n첫눈이 오면 연락하자던 약속은\n대부분 지켜지지 않는다\n\n그래도 우리는\n하늘을 한 번씩 올려다본다\n약속보다 마음이 먼저 오니까',
+ '「계절을 접는 법」\n\n끝난 계절은 버리지 않고\n네 번 접어\n가슴 주머니에 넣는다\n\n추운 날 꺼내 펼치면\n아직도\n조금 따뜻하다']},
+{id:'b19',title:'하루 한 장, 다정의 연습',author:'김온새',genre:'에세이',price:90,color:['#e8a080','#fff0d8'],orn:'☕',tags:['에세이','위로','일상','따뜻','힐링','장편','10장','잔잔'],blurb:'바쁜 하루에 한 장씩. 나에게, 그리고 옆 사람에게 조금 더 다정해지는 열 번의 연습.',
+ pages:['첫 번째 연습: 아침에 거울을 보며 "오늘도 일어났네"라고 말해 보기. 잘한 일을 거창하게 찾지 않아도 된다. 일어난 것만으로도 하루의 첫 숙제는 끝났다.',
+ '두 번째 연습: 커피를 내리는 3분 동안 휴대폰 보지 않기. 물 끓는 소리, 원두 냄새, 창밖 빛의 색. 하루 중 가장 짧은 여행은 생각보다 가까이 있다.',
+ '세 번째 연습: 고맙다는 말을 한 번 더 하기. 편의점 계산대에서, 엘리베이터 문을 잡아 준 사람에게. 다정은 큰 결심이 아니라 반복되는 작은 습관이다.',
+ '네 번째 연습: 실수한 나에게 친구에게 하듯 말해 주기. "그럴 수도 있지. 다음엔 조금 더 잘할 거야." 남에게 쉬운 말이 나에게 제일 어렵다.',
+ '다섯 번째 연습: 점심시간에 5분만 걷기. 회사 근처 골목의 나무 이름을 하나 알아내는 것. 익숙한 길이 갑자기 조금 낯설고 예뻐진다.',
+ '여섯 번째 연습: 연락이 뜸했던 사람에게 이유 없이 안부 묻기. "그냥 생각나서." 이 다섯 글자는 생각보다 많은 사람의 하루를 구한다.',
+ '일곱 번째 연습: 하기 싫은 일 하나를 작게 쪼개기. 보고서 전체가 아니라 첫 문장만. 시작이 반이 아니라, 시작은 그냥 시작이다. 그래도 그게 제일 중요하다.',
+ '여덟 번째 연습: 퇴근길에 오늘 좋았던 일 세 가지 떠올리기. 맛있던 김밥, 웃긴 메시지, 노을. 기억은 우리가 자주 꺼내 보는 쪽으로 자란다.',
+ '아홉 번째 연습: 잘 거절하기. "이번엔 어려울 것 같아요, 대신 다음엔 꼭요." 나를 지키는 거절도 다정의 한 종류다.',
+ '열 번째 연습: 잠들기 전, 내일의 나에게 한 줄 메모 남기기. "내일도 너무 애쓰지 마." 다정의 연습은 결국, 나와 오래 잘 지내기 위한 연습이다.']}];
 const BOOK=Object.fromEntries(BOOKS.map(b=>[b.id,b]));
 const GENRES=['전체',...new Set(BOOKS.map(b=>b.genre))];
 const ITEMS=[
@@ -1232,7 +1290,7 @@ $('#sortGo').onclick=async()=>{if(!pick.house)return;$('#sortGo').disabled=true;
 let myModel=null,myKey='',myPet=null,myPetId='';
 function ensureMyModel(){const key=[ME.house,ME.hair,ME.skin,ME.equip.hat,ME.equip.face].join('|');if(key!==myKey){if(myModel&&myModel.g.parent)myModel.g.parent.remove(myModel.g);myModel=makeChar({h:ME.house,hair:ME.hair,skin:ME.skin,hat:ME.equip.hat,face:ME.equip.face});setTag(myModel,ME.name,ME.house,true);myKey=key}
  const pid=ME.equip.pet||'';if(pid!==myPetId){if(myPet&&myPet.g.parent)myPet.g.parent.remove(myPet.g);myPet=pid?makePet(pid):null;myPetId=pid}}
-const APP_VER='v1125e';
+const APP_VER='v1125f';
 function track(ev,params){try{if(typeof window.gtag==='function')window.gtag('event',ev,params||{})}catch(e){}}
 function enterLibrary(isNew){track(isNew?'sign_up':'login',{method:'character',house:ME&&ME.house});ME.read=ME.read||{};ME.done=ME.done||{};ME.equip=ME.equip||{};ME.items=ME.items||[];ME.books=ME.books||['b1'];
  $('#sortScreen').classList.add('hidden');$('#intro').classList.add('hidden');['#hud','#online','#ctrlHint'].forEach(s=>$(s).classList.remove('hidden'));updateHud();Snd.init();
@@ -1445,7 +1503,7 @@ function openShelf(readMode){const H=HOUSES[ME.house];const draw=()=>{const body
  wireBooks(body,draw);const lo=body.querySelector('#logout');if(lo)lo.onclick=()=>{closeModal();confirmExit()}};openModal(head(readMode?'📖 무엇을 읽을까요?':`📖 ${esc(ME.name)}의 서재`)+`<div class="body"></div>`);draw()}
 $('#bShelf').onclick=()=>{if(!modalOpen&&ME)openShelf(false)};
 function openReader(id,peek){track(peek?'preview_book':'read_book',{book_id:id,book_title:(BOOK[id]||{}).title});const b=BOOK[id];let p=peek?0:Math.min(ME.read[id]||0,b.pages.length-1);const theme='rd-'+(SC[scene].theme||'default');if(!peek){P.reading=true;P.readBook=id}
- const draw=()=>{$('#modal .panel').innerHTML=`<header><h3>${b.orn} ${esc(b.title)}</h3><span class="coins">🪙 <b class="coinNum">${ME.coins}</b></span><button class="x" data-close>✕</button></header><div class="rdesk"><div class="spread"><div class="page lp"><div class="orn">${b.orn}</div><div class="bt">${esc(b.title)}</div><h5>${esc(b.author)}<br>${peek?'미리보기':'제 '+(p+1)+'장'}</h5></div><div class="page rp">${esc(b.pages[p])}<div class="pn">${p+1} / ${peek?1:b.pages.length}</div></div></div></div><div class="rnav"><button class="pbtn alt" id="rPrev" ${p===0?'disabled':''}>◀ 이전</button><span style="font-size:13px;color:#7a6650">${peek?'구매하면 끝까지 읽을 수 있어요':'←/→ 키로 넘기기'}</span>${peek?(ME.books.includes(id)?'':`<button class="pbtn" id="rBuy" ${ME.coins<b.price?'disabled':''}>${b.price?'🪙 '+b.price+' 구매':'무료로 받기'}</button>`):`<button class="pbtn" id="rNext">${p===b.pages.length-1?'덮기':'다음 ▶'}</button>`}</div>`;
+ const draw=()=>{$('#modal .panel').innerHTML=`<header><h3>${b.orn} ${esc(b.title)}</h3><span class="coins">🪙 <b class="coinNum">${ME.coins}</b></span><button class="x" data-close>✕</button></header><div class="rdesk"><div class="spread"><div class="page lp"><div class="orn">${b.orn}</div><div class="bt">${esc(b.title)}</div><h5>${esc(b.author)}<br>${peek?'미리보기':'제 '+(p+1)+(b.genre==='시집'?'편':'장')}</h5></div><div class="page rp">${esc(b.pages[p])}<div class="pn">${p+1} / ${peek?1:b.pages.length}</div></div></div></div><div class="rnav"><button class="pbtn alt" id="rPrev" ${p===0?'disabled':''}>◀ 이전</button><span style="font-size:13px;color:#7a6650">${peek?'구매하면 끝까지 읽을 수 있어요':'←/→ 키로 넘기기'}</span>${peek?(ME.books.includes(id)?'':`<button class="pbtn" id="rBuy" ${ME.coins<b.price?'disabled':''}>${b.price?'🪙 '+b.price+' 구매':'무료로 받기'}</button>`):`<button class="pbtn" id="rNext">${p===b.pages.length-1?'덮기':'다음 ▶'}</button>`}</div>`;
   $('#modal .panel').querySelectorAll('[data-close]').forEach(x=>x.onclick=closeModal);const pv2=$('#rPrev');if(pv2)pv2.onclick=()=>turn(-1);const nx=$('#rNext');if(nx)nx.onclick=()=>turn(1);const rb=$('#rBuy');if(rb)rb.onclick=()=>{buyBook(id);openReader(id)};if(!peek)reward()};
  const reward=()=>{ME.seen=ME.seen||{};const key=id+':'+p;let gain=0;if(!ME.seen[key]){ME.seen[key]=1;ME.pagesRead=(ME.pagesRead||0)+1;gain+=3}ME.read[id]=p;if(p===b.pages.length-1&&!ME.done[id]){ME.done[id]=1;gain+=15;setTimeout(()=>toast(`🎉 『${b.title}』 완독! +15 코인`),200)}if(gain){ME.coins+=gain;refreshCoins()}save()};
  const turn=d=>{if(peek)return;const np=p+d;if(np<0)return;if(np>=b.pages.length){closeModal();return}p=np;draw()};
