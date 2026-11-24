@@ -223,9 +223,10 @@ input[type=range]{width:100%;accent-color:#e8c872}
 <script>
 /* ===== Firebase 연결 (GitHub Pages 버전) ===== */
 (function(){
-const cfg={apiKey:"AIzaSyBEiN5t5clzu5y9U-NO3gyRP5WJ751FNBE",authDomain:"check-book-on.firebaseapp.com",databaseURL:"https://check-book-on-default-rtdb.asia-southeast1.firebasedatabase.app",projectId:"check-book-on",storageBucket:"check-book-on.firebasestorage.app",messagingSenderId:"919752382883",appId:"1:919752382883:web:79552d5f00a24888d1e216"};
+const cfg={apiKey:"AIzaSyBEiN5t5clzu5y9U-NO3gyRP5WJ751FNBE",authDomain:"check-book-on.firebaseapp.com",databaseURL:"https://check-book-on-default-rtdb.asia-southeast1.firebasedatabase.app",projectId:"check-book-on",storageBucket:"check-book-on.firebasestorage.app",messagingSenderId:"919752382883",appId:"1:919752382883:web:79552d5f00a24888d1e216",measurementId:"G-7QSXH9FK92"};
 const B='https://www.gstatic.com/firebasejs/10.12.2/';let appP=null;
 const app=()=>appP||(appP=import(B+'firebase-app.js').then(m=>m.initializeApp(cfg)));
+app().then(a=>import(B+'firebase-analytics.js').then(A=>A.getAnalytics(a))).catch(()=>{});
 const clean=o=>JSON.parse(JSON.stringify(o));
 async function mkDb(){const a=await app();const F=await import(B+'firebase-firestore.js');const fs=F.getFirestore(a);
  await F.getDoc(F.doc(fs,'settings/ping'));
